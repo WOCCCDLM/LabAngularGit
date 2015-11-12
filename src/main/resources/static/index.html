@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html ng-app="app">
     <head >
         <script src="js/angular.min.js"></script>
@@ -10,28 +10,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body ng-controller="blogCtrl">
+           
+
+	 <div>
+          <body ng-controller="blogCtrl">
             <div>
+
           <form>
+            <fieldset ng-submit="processForm()">
+                <legend>EDITAR</legend>
+                <label for='title'>TitleNuevo:</label><input id='titleN' name='title' type="text" ng-model= "entry.titleN">
+                <label for='content'>ContentNuevo:</label><input id='contentN' name='content' type="text"ng-model= "entry.contentN">
+                
+          </form>
+ 	
+       	  <form ng-submit="processForm()">
             <fieldset>
                 <legend>Entry</legend>
                 <label for='title'>Title:</label><input id='title' name='title' type="text" ng-model= "entry.title">
                 <label for='content'>Content:</label><input id='content' name='content' type="text" ng-model= "entry.content">
+                <button type="submit" class="btn btn-success">
+                  <span class="glyphicon glyphicon-plus">Crear
+                </button>
           </form>
+
         </div>
         <table class="table">
           <tr>
             <th>Título </th>
             <th>Contenido</th>
-            <th>Editar </th>
+            <th>Opciones </th>	
           </tr>
 
           <tr ng-repeat="e in entries">
             <td> {{ e.title }} </td>
             <td> {{ e.content }} </td>
             <td>
-              <button type="button" class="btn btn-warning"  ng-click="edit($index)">
+              <button type="button" class="btn btn-warning"  ng-click="editar($index)">
                 Editar
               </button>
+	      
+	      <button type="button" class="btn btn-warning"  ng-click="eliminar($index)">
+                Eliminar
+              </button> 
+	      	 
+
             </td>
           </tr>
         </table>
